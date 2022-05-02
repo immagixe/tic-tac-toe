@@ -5,26 +5,14 @@ import tictactoe.model.Cell;
 
 public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
 
-    final char[][] mappingTable = {
-            {'1', '2', '3'},
-            {'4', '5', '6'},
-            {'7', '8', '9'},
-    };
-
     @Override
     public Cell toCell(final char number) {
-        for (int i = 0; i < mappingTable.length; i++) {
-            for (int j = 0; j < mappingTable.length; j++) {
-                if (mappingTable[i][j] == number) {
-                    return new Cell(i, j);
-                }
-            }
-        }
-        return null;
-    }
+        final int val = number - '0' - 1;
+        return new Cell (val/3,val%3);
+}
 
     @Override
-    public char toNumber (final Cell cell) {
-        return mappingTable[cell.getRow()][cell.getCol()];
+    public char toNumber(final Cell cell) {
+        return (char)('0' + (cell.getRow()*3 + cell.getCol() +1));
     }
 }
