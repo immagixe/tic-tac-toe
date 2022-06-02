@@ -2,6 +2,10 @@ package tictactoe;
 
 import tictactoe.component.*;
 import tictactoe.component.keypad.DesktopNumericKeypadCellNumberConverter;
+import tictactoe.model.Player;
+
+import static tictactoe.model.Sign.O;
+import static tictactoe.model.Sign.X;
 
 public final class Launcher {
 
@@ -9,10 +13,11 @@ public final class Launcher {
         final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
         final Game game = new Game(
                 new DataPrinter(cellNumberConverter),
-                new ComputerMove(),
-                new UserMove(cellNumberConverter),
+                new Player(X, new UserMove(cellNumberConverter)),
+                new Player(O, new ComputerMove()),
                 new WinnerVerifier(),
-                new CellVerifier());
+                new CellVerifier(),
+                true);
         game.play();
     }
 }
