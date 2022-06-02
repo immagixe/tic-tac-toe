@@ -7,8 +7,9 @@ import java.util.Random;
 
 import static tictactoe.model.Sign.O;
 
-public class ComputerMove {
+public class ComputerMove implements Move{
 
+    @Override
     public void make(final GameTable gameTable) {
         final Random random = new Random();
         while (true) {

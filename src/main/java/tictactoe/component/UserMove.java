@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import static tictactoe.model.Sign.X;
 
-public class UserMove {
+public class UserMove implements Move{
 
     private final CellNumberConverter cellNumberConverter;
 
@@ -15,6 +15,7 @@ public class UserMove {
         this.cellNumberConverter = cellNumberConverter;
     }
 
+    @Override
     public void make(final GameTable gameTable) {
         while (true) {
             final Cell cell = getUserInput(gameTable);
